@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线投票系统</title>
+    <link rel="stylesheet" href="css/vote.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-poll-h"></i> 多功能投票系统</h1>
+            <button class="back-btn hidden" onclick="showMain()">
+                <i class="fas fa-arrow-left"></i> 返回主菜单
+            </button>
+        </header>
+    
+        <!-- 在模式选择section后添加历史记录 -->
+        <section class="history-section">
+            <h3><i class="fas fa-history"></i> 已创建投票</h3>
+            <div id="voteHistory" class="history-list"></div>
+        </section>
+        
+        <section class="mode-select">
+            <div class="mode-card" onclick="showCreatePanel()">
+                <i class="fas fa-plus-circle"></i>
+                <h3>创建新投票</h3>
+            </div>
+            <div class="mode-card" onclick="showJoinPanel()">
+                <i class="fas fa-sign-in-alt"></i>
+                <h3>参与投票</h3>
+            </div>
+        </section>
+
+        <!-- 新增创建投票面板 -->
+        <section class="create-panel hidden">
+            <div class="vote-card">
+                <h2>创建新投票</h2>
+                <div class="form-group">
+                    <label>投票标题：</label>
+                    <input type="text" id="voteTitle" placeholder="输入投票主题">
+                </div>
+                <!-- 修改创建投票面板的选项输入区域 -->
+                <div class="form-group">
+                    <label>投票选项：</label>
+                    <div id="optionsContainer">
+                        <div class="option-row">
+                            <input type="text" class="option-input" placeholder="输入选项内容">
+                            <div class="button-group">
+                                <button class="add-option-btn" onclick="addOptionField(event)">
+                                    <i class="fas fa-plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="submit-btn" onclick="createVote()">生成投票</button>
+            </div>
+        </section>
+
+        <!-- 新增参与投票面板 -->
+        <section class="join-panel hidden">
+            <div class="vote-card">
+                <h2>参与已有投票</h2>
+                <div class="form-group">
+                    <label>输入投票码：</label>
+                    <input type="text" id="voteCode" placeholder="6位投票码">
+                </div>
+                <button class="submit-btn" onclick="joinVote(event)">进入投票</button> <!-- 添加event参数 -->
+            </div>
+        </section>
+    </div>
+    <!-- Update the script block at the end of index.html -->
+    <script src="js/vote.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showMain();
+            renderHistory();  // Move renderHistory call inside DOMContentLoaded
+        });
+    </script>
+</body>
+</html>

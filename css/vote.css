@@ -1,0 +1,344 @@
+/* 基础样式 */
+body {
+    background: url('../img/vote-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
+/* 投票卡片样式 */
+.vote-card, .result-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 在.options后添加 */
+.options {
+    display: grid;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* 补充选项按钮完整样式 */
+.option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #dee2e6;
+    margin: 8px 0;
+}
+
+.option:hover {
+    border-color: #17a2b8;
+    background: #e9ecef;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 12px;
+    position: relative;
+}
+
+input[type="radio"]:checked ~ .checkmark {
+    border-color: #17a2b8;
+    background: #17a2b820;
+}
+
+input[type="radio"]:checked ~ .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background: #17a2b8;
+    border-radius: 50%;
+}
+
+/* 提交按钮 */
+.submit-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+/* 结果展示 */
+#results {
+    margin-top: 20px;
+}
+
+.result-bar {
+    background: #e9ecef;
+    margin: 10px 0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.result-fill {
+    background: #17a2b8;
+    height: 30px;
+    padding: 5px;
+    color: white;
+    transition: width 0.5s ease;
+}
+
+
+/* 刷新按钮样式 */
+.refresh-btn {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.refresh-btn:hover {
+    background: #138496;
+    transform: scale(1.05);
+}
+
+.refresh-btn i {
+    margin-right: 5px;
+}
+
+
+/* 模式选择界面 */
+.mode-select {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.mode-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mode-card i {
+    font-size: 3em;
+    color: #17a2b8;
+    margin-bottom: 15px;
+}
+
+/* 表单元素 */
+.form-group {
+    margin: 20px 0;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* 返回按钮 */
+/* 修改返回按钮样式 */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-btn:hover {
+    background: #138496;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.back-btn i {
+    font-size: 16px;
+}
+
+.history-section {
+    margin-top: 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.history-list {
+    display: grid;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.history-item {
+    padding: 12px;
+    background: #f8f9fa;
+    border-left: 4px solid #17a2b8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background: #dc3545;
+    margin-left: 10px;
+    padding: 6px 12px;
+    border-radius: 15px;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+.copy-btn {
+    background: #17a2b8;
+    padding: 6px 12px;
+    border-radius: 15px;
+}
+
+
+/* 新增选项输入行样式 */
+.option-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.option-input {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-option-btn, .remove-option-btn {
+    background: none;
+    border: none;
+    color: #17a2b8;
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+.add-option-btn:hover {
+    color: #138496;
+}
+
+.remove-option-btn {
+    color: #dc3545;
+}
+
+.remove-option-btn:hover {
+    color: #c82333;
+}
+
+
+/* 优化按钮组布局 */
+.button-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.option-row:not(:last-child) .add-option-btn {
+    display: none;
+}
+
+
+/* 新增提示信息样式 */
+.no-results {
+    background: #dc3545;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+
+/* 添加在文件末尾 */
+.total-participants {
+    padding: 12px;
+    margin-bottom: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: #2c3e50;
+    border: 1px solid #dee2e6;
+}
+
+.total-participants i {
+    margin-right: 8px;
+    color: #3498db;
+}

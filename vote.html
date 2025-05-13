@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投票详情页</title>
+    <link rel="stylesheet" href="css/vote.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="voteTitle"></h1>
+            <button class="back-btn" onclick="history.back()">
+                <i class="fas fa-arrow-left"></i> 返回
+            </button>
+        </header>
+        
+        <section class="vote-section">
+            <div class="vote-card">
+                <div id="optionsContainer" class="options"></div>
+                <button class="submit-btn" onclick="submitVote()">提交投票</button>
+            </div>
+            
+            <div class="result-card">
+                <h2>实时结果 
+                    <button class="refresh-btn" onclick="refreshResults()">
+                        <i class="fas fa-sync-alt"></i> 刷新
+                    </button>
+                </h2>
+                <div id="results"></div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/vote.js"></script>
+    <script>
+    // 初始化投票数据
+    const urlParams = new URLSearchParams(window.location.search);
+    const voteCode = urlParams.get('code');
+    const currentVoteDB = initVotesDB();  // 重命名变量避免冲突
+    
+    if (!voteCode || !currentVoteDB[voteCode]) {  // 使用新变量名
+        location.href = '在线投票.html';
+    }
+
+    // 加载投票选项
+    const voteData = currentVoteDB[voteCode];
+    document.getElementById('voteTitle').textContent = voteData.title;
+    
+    // 可合并为单个操作
+    const optionsContainer = document.getElementById('optionsContainer');
+    optionsContainer.innerHTML = Object.keys(voteData.options)
+        .map(option => `
+            <label class="option">
+                <input type="radio" name="vote" value="${option}">
+                <span class="checkmark"></span>
+                ${option}
+            </label>
+        `).join('');
+    </script>
+</body>
+</html>
